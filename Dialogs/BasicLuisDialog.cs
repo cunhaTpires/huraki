@@ -19,7 +19,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         {
         }
 
-        private readonly Dictionary<string, Note> noteByTitle = new Dictionary<string, Note>();
+        private readonly Dictionary<string, Note> noteByTitle  = new Dictionary<string, Note>();
         private Note noteToCreate;
         private string currentTitle;
 
@@ -111,7 +111,8 @@ namespace Microsoft.Bot.Sample.LuisBot
             // Set the text of the note
             noteToCreate.Text = await result;
 
-            await context.PostAsync(string.Format("Created note **{0}** that says \"{1}\".", noteToCreate.Title, noteToCreate.Text));
+            await context.PostAsync("Created note **{this.noteToCreate.Title}** that says \"{this.noteToCreate.Text}\".");
+            //await context.PostAsync(string.Format("Created note **{0}** that says \"{1}\".", noteToCreate.Title, noteToCreate.Text));
             context.Wait(MessageReceived);
         }
 
