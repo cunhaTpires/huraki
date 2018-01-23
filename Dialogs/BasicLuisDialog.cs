@@ -110,9 +110,8 @@ namespace Microsoft.Bot.Sample.LuisBot
         {
             // Set the text of the note
             noteToCreate.Text = await result;
-
-            await context.PostAsync("Created note **{this.noteToCreate.Title}** that says \"{this.noteToCreate.Text}\".");
-            //await context.PostAsync(string.Format("Created note **{0}** that says \"{1}\".", noteToCreate.Title, noteToCreate.Text));
+            
+            await context.PostAsync(string.Format("Created note **{0}** that says \"{1}\".", noteToCreate.Title, noteToCreate.Text));
             context.Wait(MessageReceived);
         }
 
@@ -122,7 +121,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             Note note;
             if (TryFindNote(result, out note))
             {
-                await context.PostAsync("**{note.Title}**: {note.Text}.");
+                await context.PostAsync(string.Format("**{0}**: {1}.", note.Title, note.Text));
             }
             else
             {
