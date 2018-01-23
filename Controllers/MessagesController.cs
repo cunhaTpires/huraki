@@ -25,7 +25,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             // check if activity is of type message
             if (activity.GetActivityType() == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new QnADialog());
+                await Conversation.SendAsync(activity, () => new LuisDialog());
             }
             else
             {
@@ -59,7 +59,7 @@ namespace Microsoft.Bot.Sample.LuisBot
             else if (message.Type == ActivityTypes.Ping)
             {
             }
-
+            
             return null;
         }
     }
