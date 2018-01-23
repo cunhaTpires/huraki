@@ -21,7 +21,7 @@ namespace LuisBot.Dialogs
         [QnAMakerResponseHandler(50)]
         public async Task LowScoreHandler(IDialogContext context, string originalQueryText, QnAMakerResult result)
         {
-            await context.PostAsync(string.Format("I found an answer that might help... {0}", result.Answer));
+            await context.PostAsync(string.Format("I found an answer that might help... {0}, {1}", result.Score, result.Answer));
             context.Wait(MessageReceived);
         }
     }
